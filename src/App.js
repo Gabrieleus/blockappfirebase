@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/header/header-index";
+import Hero from "./components/hero/hero-index";
+import Main from "./components/main/main-index";
+import React, { useState } from "react";
+import moviesData from "./movies-data";
 
 function App() {
+  const [data, setData] = useState(moviesData);
+  const [input, setInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header
+        data={data}
+        setInput={setInput}
+        key="header"
+        setSearchInput={setSearchInput}
+      />
+      <Hero />
+      <Main data={data} input={input} ke="main" searchInput={searchInput} />
     </div>
   );
 }
